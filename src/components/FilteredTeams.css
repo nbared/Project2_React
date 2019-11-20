@@ -8,15 +8,21 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 1.1em;
-
+    margin: 5px;
+    
     }
 
 
 .teamListItem {
     background-color: bisque;
+    border: 2px solid black;
     width: 200px;
-    height: 100%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
     list-style-type: none;
     
 
@@ -24,6 +30,18 @@
 
 .teamName {
     font-size: 20px;
-    color: Black
-   
+    color: Black;
+    margin-bottom: 10px
+}
+
+.teamLeague {
+    font-size: 14px;
+    margin:10px;
+    color: black;
+}
+
+.search {
+    width: 50vw;
+    height: 30px;
+    border: 2px solid black
 }

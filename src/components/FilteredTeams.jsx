@@ -114,24 +114,21 @@ showTeams = () => {
 
     return this.state.viewableTeams.map((theTeam, i) => {
       return (
-        <div >
+        <div>
         <ul className='teamList'>
 
-            <Link className='link' to='/team'>
+            <Link to={`/team/${theTeam.idTeam}`} className='link' >
           <li key={i} className="teamListItem">
-              
                 <h1 className='teamName'>{theTeam.strTeam.toUpperCase()}</h1> 
                 <img className='teamBadge' src={theTeam.strTeamBadge} height='70px' width='70px'></img>
               <div className='teamLeague'>
                 {theTeam.strLeague}
               </div>
-              <div className='teamLocation'>
-                {theTeam.strStadiumLocation}
-              </div>
           </li> 
             </Link>
         </ul>
-        </div>
+      </div>
+      
     );
   });
 }
@@ -170,7 +167,7 @@ showTeams = () => {
 
      <h1>Find your club</h1>  
    
-    <input type='text' placeholder='Search by team name' name='search' className='search' onChange={this.searchForTeam}></input>  
+    <input type='text' placeholder='  Search by team name' name='search' className='search' onChange={this.searchForTeam}></input>  
       <div className='teamList'>{this.showTeams()}</div>
     </div>
     );
