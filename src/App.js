@@ -14,11 +14,10 @@ class App extends Component {
     return (
       <div className="App">
        <Switch>
-        <Route exact path="/home" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/choose-team" component={FilteredLeagues} />
         <Route exact path="/team" component={Team} />
         </Switch>
-      console.log('hi')
       </div>
     );
   }
