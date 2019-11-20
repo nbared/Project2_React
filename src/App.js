@@ -13,11 +13,12 @@ class App extends Component {
     console.log('reload!!!?2323??', new Date());
     return (
       <div className="App">
-       <Switch>
+      Meow
+       {/* <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/choose-team" component={FilteredLeagues} />
         <Route exact path="/team" component={Team} />
-        </Switch>
+        </Switch> */}
       </div>
     );
   }
