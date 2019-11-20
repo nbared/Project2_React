@@ -4,6 +4,8 @@ import FilteredLeagues from "./FilteredTeams"
 
 export default class Home extends Component {
     render() {
+        console.log('home!!!', new Date());
+
         return (
             <div>
                  {/* <h1>Fanbook</h1> */}
