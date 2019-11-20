@@ -4,7 +4,7 @@ import FilteredLeagues from "./FilteredTeams"
 
 export default class Home extends Component {
     render() {
-        console.log('home!!!', new Date());
+        console.log('home!!!??', new Date());
 
         return (
             <div>
