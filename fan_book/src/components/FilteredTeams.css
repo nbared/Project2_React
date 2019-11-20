@@ -1,0 +1,29 @@
+.link {
+    text-decoration: none;
+}
+
+
+.teamList {
+    all: unset;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1.1em;
+
+    }
+
+
+.teamListItem {
+    background-color: bisque;
+    width: 200px;
+    height: 100%;
+    list-style-type: none;
+    
+
+}
+
+.teamName {
+    font-size: 20px;
+    color: Black
+   
+}

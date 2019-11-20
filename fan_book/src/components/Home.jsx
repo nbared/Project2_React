@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route, Link } from "react-router-dom";
-import FilteredLeagues from "./FilteredLeagues"
+import FilteredLeagues from "./FilteredTeams"
 
 export default class Home extends Component {
     render() {
