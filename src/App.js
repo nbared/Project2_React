@@ -10,7 +10,7 @@ import Team from "./components/Team"
 class App extends Component {
 
   render() {
-    console.log('reload!!!', new Date());
+    console.log('reload!!!???', new Date());
     return (
       <div className="App">
        <Switch>
