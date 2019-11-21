@@ -6,7 +6,7 @@ import Home from "./components/Home"
 import FilteredLeagues from "./components/FilteredTeams"
 import Team from "./components/Team"
 import Player from "./components/Player"
-
+import './components/Home.css'
 class App extends Component {
 
   render() {
