@@ -8,7 +8,7 @@ export default class Home extends Component {
         console.log('home!!!??', new Date());
 
         return (
-        <body className='homeBody'>
+        <body className='homeBody' style={{backgroundImage:"url('./images/image.jpg')"}}>
 
         <div className='landingPage'>
         <h3>Choose Your Team,</h3>
