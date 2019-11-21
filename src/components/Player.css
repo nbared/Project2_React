@@ -1,0 +1,54 @@
+.playerHeader {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    background-color: bisque;
+    border-bottom: 1px solid black;
+}
+
+.playerHeader > h1 {
+    font-size: 6vw;
+    margin: 20px;
+   
+}
+
+
+.playerImg {
+    height: 150px;
+    width: 150px;
+    background-color: white;
+    border-radius:50%;
+    /* padding: 10px; */
+    border: 2px solid black;
+}
+.details {
+    display: flex;
+}
+.playerStats {
+    height: 100vh;
+    width: 400px;
+    text-align: left;
+    list-style-type: none;
+    height: 40vh;
+    overflow: scroll;
+}
+.about {
+    margin: 0;
+    width: 85vw;
+    padding: 0 20px;
+    height: 42vh;
+    overflow: scroll;
+    background-color: coral;
+    text-align: left;
+}
+
+.about > h3 {
+    margin: 5px 0;
+}
+
+li {
+    padding: 10px;
+    position: relative;
+    right: 20px;
+    font-size: 1.2em;
+}

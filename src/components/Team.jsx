@@ -7,7 +7,8 @@ export default class Team extends Component {
 
     state= {
         theTeam: [],
-        teamName: ""
+        teamName: "",
+        players: [],
     }     
 
 componentDidMount(){
@@ -18,6 +19,13 @@ componentDidMount(){
         }, () => {
             this.getTeamData()
         }
+        );
+      });
+      const playerPath = `https://www.thesportsdb.com/api/v1/json/1/lookup_all_players.php?id=${this.props.match.params.id}`
+    axios.get(playerPath).then(players => {
+        this.setState({
+          players: players.data
+        }, 
         );
       });
 }
@@ -48,10 +56,69 @@ getTeamData = () => {
     
 }
 
+getPlayerData = () => {
+    console.log(this.state.players)
+    if (this.state.players.player !== undefined){
+        // this.setState({
+        //     team:
+        // })
+    console.log(this.state.players.player)
+
+    let copyPlayers = [...this.state.players.player]
+    console.log(copyPlayers)
+   
+    let listOfPlayers = copyPlayers.map(eachPlayer =>{
+        console.log(eachPlayer.strPlayer)
+        return(
+            <ul className='teamRoster'>
+
+            <Link to={`/player/${eachPlayer.idPlayer}`} className='link' >
+            <li className='eachPlayer'>
+                {eachPlayer.strPlayer}
+                <img classname='playerIcon' src={eachPlayer.strCutout}></img>
+            </li>
+            </Link>
+            </ul>
+        )
+    })
+
+    return listOfPlayers
+    
+    }
+}
+
+// showPlayers = () => {
+//     if (this.state.players !== undefined){
+
+//         return this.state.players.map((thePlayer, i) => {
+//           return (
+//               console.log(thePlayer)
+//         //     <div>
+//         //     <ul className='playerList'>
+    
+//         //     <Link to={`/team/${theTeam.idTeam}`} className='link' >
+//         //       <li key={i} className="playerListItem">
+//         //             <h1 className='playerName'>{thePlayer.strPlayer}</h1> 
+//         //       </li> 
+//         //         </Link>
+//         //     </ul>
+//         //   </div>
+//           )
+//         })}
+// }
+
+
+
     render() {
         // this.getTeamData()
+        // this.showPlayers()
+        // if (this.state.players.player !== undefined) {
+            // }
+        // this.getPlayerData()
+        
         return (
             <div>
+
                 <h1 className='theTeamName'>{this.state.teamName} <span className='abv'>{this.state.teamShort}</span></h1>
              
                 <img className='badge' src={this.state.teamBadge}></img>
@@ -66,6 +133,9 @@ getTeamData = () => {
                     </div>
                     <h4>{this.state.teamAltName}</h4> 
                     <Link to={this.state.teamWebsite}>Team Website</Link>
+                    <ul className = 'roster'>
+                    {this.getPlayerData()}
+                    </ul>
                 </div>
             </div>
         )

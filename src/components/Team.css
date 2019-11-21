@@ -27,3 +27,30 @@
     font-style: italic;
     color: red
 }
+
+.roster {
+    list-style-type: none;
+    text-align: left;
+  
+}
+
+.eachPlayer {
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.eachPlayer > img {
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.teamRoster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

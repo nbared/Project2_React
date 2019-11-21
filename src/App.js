@@ -5,6 +5,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import Home from "./components/Home"
 import FilteredLeagues from "./components/FilteredTeams"
 import Team from "./components/Team"
+import Player from "./components/Player"
 
 class App extends Component {
 
@@ -16,6 +17,8 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/choose-team" component={FilteredLeagues} />
         <Route exact path="/team/:id" component={Team} />
+        <Route exact path ="/player/:idPlayer" component={Player}/>
+  
         </Switch>
       </div>
     );
