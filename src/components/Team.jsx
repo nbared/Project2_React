@@ -70,15 +70,15 @@ getPlayerData = () => {
     let listOfPlayers = copyPlayers.map(eachPlayer =>{
         console.log(eachPlayer.strPlayer)
         return(
-            <ul className='teamRoster'>
-
+           
+            
             <Link to={`/player/${eachPlayer.idPlayer}`} className='link' >
-            <li className='eachPlayer'>
-                {eachPlayer.strPlayer}
+            <div className='eachPlayer'>
+                <h4 className='playerName'>{eachPlayer.strPlayer}</h4> 
                 <img classname='playerIcon' src={eachPlayer.strCutout}></img>
-            </li>
+            </div>
             </Link>
-            </ul>
+     
         )
     })
 
@@ -118,10 +118,11 @@ getPlayerData = () => {
         
         return (
             <div>
-
-                <h1 className='theTeamName'>{this.state.teamName} <span className='abv'>{this.state.teamShort}</span></h1>
-             
-                <img className='badge' src={this.state.teamBadge}></img>
+                <div className= "teamHeader">
+                <img className="teamImg" src={this.state.teamBadge}></img>
+                <h1>{this.state.teamName}</h1>
+            </div>
+               
                 <div className='teamDetails'>
                     <div className='teamDescription'>
                         <h3>About club:</h3>
@@ -131,11 +132,11 @@ getPlayerData = () => {
                     <h3>{this.state.teamStadium}</h3>
                     <h4>{this.state.teamStadiumLocation}</h4>
                     </div>
-                    <h4>{this.state.teamAltName}</h4> 
+                    <p>{this.state.teamAltName}</p> 
                     <Link to={this.state.teamWebsite}>Team Website</Link>
-                    <ul className = 'roster'>
+                    <div className = 'roster'>
                     {this.getPlayerData()}
-                    </ul>
+                    </div>
                 </div>
             </div>
         )

@@ -1,10 +1,6 @@
 .badge {
     height: 150px;
-}
-
-.theTeamName {
-    font-size: 3em;
-    margin-bottom: 10px;
+    margin: 20px;
 }
 
 
@@ -13,13 +9,15 @@
     color: white;
     width: 50vw;
     height: 200px;
-    position: relative;
     margin: 20px;
-    left: 21vw;
     overflow: scroll;
     padding: 10px;
     text-align: left;
     border: 3px solid black;
+}
+
+.teamDescription > h3 {
+    margin: 0px;
 }
 
 .abv {
@@ -31,25 +29,78 @@
 .roster {
     list-style-type: none;
     text-align: left;
-  
+    display: flex;
+    flex-wrap: wrap;
+   
+    width: 70vw;
+    margin: 30px;
+    justify-content: center;
 }
 
 .eachPlayer {
-    margin: 5px;
+    margin: 1px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     color: black;
+    background-color: bisque;
+    padding: 2px;
+   width: 150px;
+   border: 2px solid black
 }
 
 .eachPlayer > img {
     height: 50px;
     width: 50px;
     border: 1px solid black;
+    background-color: white;
     border-radius: 50%;
-    margin: 10px;
+   
+   
 }
 
 .teamRoster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.teamHeader {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    /* background-color: bisque;
+    border-bottom: 1px solid black; */
+    margin: 0;
+}
+
+.teamHeader > h1 {
+    width: 100vw;
+    font-size: 13vw;
+    margin: 2px;
+   
+}
+
+
+.teamImg {
+    height: 150px;
+    width: 150px;
+    margin-left: 30px;
+    background-color: white;
+    /* border-radius:50%; */
+    /* padding: 10px; */
+    /* border: 2px solid black; */
+}
+
+
+
+.playerName {
+    margin: 2px;
+    font-size: 14px;
+    width: 60%;
+}
+
+.teamDetails {
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -115,7 +115,8 @@ showTeams = () => {
     return this.state.viewableTeams.map((theTeam, i) => {
       return (
         <div>
-        <ul className='teamList'>
+       
+
 
             <Link to={`/team/${theTeam.idTeam}`} className='link' >
           <li key={i} className="teamListItem">
@@ -126,7 +127,7 @@ showTeams = () => {
               </div>
           </li> 
             </Link>
-        </ul>
+     
       </div>
       
     );
@@ -168,7 +169,10 @@ showTeams = () => {
      <h1>Find your club</h1>  
    
     <input type='text' placeholder='  Search by team name' name='search' className='search' onChange={this.searchForTeam}></input>  
-      <div className='teamList'>{this.showTeams()}</div>
+    <ul className='teamList'>
+
+      {this.showTeams()}
+      </ul>
     </div>
     );
   }

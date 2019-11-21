@@ -7,17 +7,18 @@
 }
 
 .playerHeader > h1 {
-    font-size: 6vw;
+    font-size: 8vw;
     margin: 20px;
    
 }
 
 
 .playerImg {
-    height: 150px;
-    width: 150px;
+    height: 180px;
+    width: 180px;
     background-color: white;
     border-radius:50%;
+    margin-left: 20px;
     /* padding: 10px; */
     border: 2px solid black;
 }
