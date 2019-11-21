@@ -40,11 +40,9 @@ getTeamData = () => {
                 teamStadium: teamData.strStadium,
                 teamStadiumLocation: teamData.strStadiumLocation,
                 teamAltName: teamData.strAlternate,
-                teamSocial: {
-                    instagram: teamData.strInstagram,
-                    facebook: teamData.strFacebook,
-                    twitter: teamData.strTwitter,
-                },
+                teamInstagram: teamData.strInstagram,
+                teamFacebook: teamData.strFacebook,
+                teamTwitter: teamData.strTwitter,
                 teamWebsite: teamData.strWebsite,
                 teamDescription: teamData.strDescriptionEN,
                 teamBadge: teamData.strTeamBadge,
@@ -126,16 +124,27 @@ getPlayerData = () => {
                 <div className='teamDetails'>
                     <div className='teamDescription'>
                         <h3>About club:</h3>
+                        <p>Stadium: {this.state.teamStadium}</p>
+                        <p>Location: {this.state.teamStadiumLocation}</p>
                         <p>{this.state.teamDescription}</p>
                     </div>
-                    <div className='teamLocation'>
-                    <h3>{this.state.teamStadium}</h3>
-                    <h4>{this.state.teamStadiumLocation}</h4>
-                    </div>
                     <p>{this.state.teamAltName}</p> 
-                    <Link to={this.state.teamWebsite}>Team Website</Link>
                     <div className = 'roster'>
                     {this.getPlayerData()}
+                    </div>
+                    <div className="teamLinks">
+                    <div><Link to={this.state.teamWebsite}> 
+                    <img className='social' src='./images/web.png'></img> 
+                    </Link></div>
+                    <div><Link to={this.state.teamInstagram}>
+                    <img className='social' src='./images/Instagram.png'></img>
+                    </Link></div> 
+                    <div><Link to={this.state.teamFacebook}> 
+                    <img className='social' src='./images/Facebook.png'></img>
+                    </Link></div>
+                    <div><Link to={this.state.teamTwitter}> 
+                    <img className='social' src='./images/Twitter.png'></img>
+                    </Link></div>  
                     </div>
                 </div>
             </div>

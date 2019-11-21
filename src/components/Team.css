@@ -5,9 +5,9 @@
 
 
 .teamDescription {
-    background-color: coral;
+    background-color: lightcoral;
     color: white;
-    width: 50vw;
+    width: 80vw;
     height: 200px;
     margin: 20px;
     overflow: scroll;
@@ -31,14 +31,13 @@
     text-align: left;
     display: flex;
     flex-wrap: wrap;
-   
     width: 70vw;
-    margin: 30px;
+    margin-bottom: 30px;
     justify-content: center;
 }
 
 .eachPlayer {
-    margin: 1px;
+    margin: 2px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -104,4 +103,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.social {
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+}
+
+.teamLinks {
+    background-color: lightcoral;
+    border: 2px solid black;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100px;
 }
