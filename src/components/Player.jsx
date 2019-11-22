@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import './Player.css'
+import {Link} from 'react-router-dom'
 
 export default class Player extends Component {
 
@@ -33,11 +34,9 @@ getDetail = () => {
                 playerDOB: playerData.dateBorn,
                 playerBirthplace: playerData.strBirthLocation,
                 playerPosition: playerData.strPosition,
-                playerSocial: {
                     facebook: playerData.strFacebook,
                     twitter: playerData.strTwitter,
                     instagram: playerData.strInstagram,
-                },
                 playerWeight: playerData.strWeight,
                 playerHeight: playerData.strHeight,
                 playerDescription: playerData.strDescriptionEN,
@@ -72,6 +71,18 @@ getDetail = () => {
                 <span>{this.state.playerDescription}</span>
                 </p>
            
+            </div>
+        
+            <div className="footer">
+                    <div><Link to={this.state.instagram}>
+                    <img className='social' src='./images/Instagram.png'></img>
+                    </Link></div> 
+                    <div><Link to={this.state.facebook}> 
+                    <img className='social' src='./images/Facebook.png'></img>
+                    </Link></div>
+                    <div><Link to={this.state.twitter}> 
+                    <img className='social' src='./images/Twitter.png'></img>
+                    </Link></div>  
             </div>
             </div>
         )
