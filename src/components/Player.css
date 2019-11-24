@@ -1,48 +1,47 @@
-.playerHeader {
+.header {
     display: flex;
     padding: 10px;
     align-items: center;
     background-color: bisque;
     border-bottom: 2px solid black;
+    justify-content: space-between;
 }
 
-.playerHeader > h1 {
-    font-size: 8vw;
-    margin: 20px;
-   
+.header > h1 {
+    font-size: 7.5vw;
+    margin: 0 40px 0 10px;
+    color: #222
 }
 
 
 .playerImg {
-    height: 180px;
-    width: 180px;
+    height: 12vw;
+    /* width: 180px; */
+    margin-left: 70px;
     background-color: white;
     border-radius:50%;
-    margin-left: 20px;
-    /* padding: 10px; */
     border: 2px solid black;
 }
 .details {
     display: flex;
 }
 .playerStats {
-    height: 100vh;
-    width: 400px;
+    width: 25vw;
     text-align: left;
     list-style-type: none;
     height: 65vh;
     color: bisque;
     position: relative;
     bottom: 16px;
-    overflow: scroll;
+    /* overflow: scroll; */
     background-color: #222;
     padding-top: 20px;
 }
 .about {
     margin: 0;
-    width: 85vw;
-    padding: 0 20px;
-    height: 60vh;
+    width: 50vw;
+    padding: 0 30px;
+    height: 62vh;
     overflow: scroll;
     background-color: lightgray;
     text-align: left;
@@ -59,6 +58,17 @@ li {
     font-size: 1.2em;
 }
 
+.playerRender {
+    background-color: white;
+    border-left: 2px solid black;
+    width: 25vw;
+}
+
+.playerRender > img {
+    height: 200px;
+    width: 150px;
+}
+
 .footer {
     display: flex;
     justify-content: space-around;
@@ -66,7 +76,7 @@ li {
     border-top: 2px solid black;
     background-color: bisque;
     width: 100vw;
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    height: 15vh;
+    height: 12vh;
 }

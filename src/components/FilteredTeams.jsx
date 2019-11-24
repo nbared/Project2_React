@@ -120,8 +120,8 @@ showTeams = () => {
 
             <Link to={`/team/${theTeam.idTeam}`} className='link' >
           <li key={i} className="teamListItem">
-                <h1 className='teamName'>{theTeam.strTeam.toUpperCase()}</h1> 
-                <img className='teamBadge' src={theTeam.strTeamBadge} height='70px' width='70px'></img>
+                <h1 className='teamNames'>{theTeam.strTeam.toUpperCase()}</h1> 
+                <img className='teamBadge' alt='' src={theTeam.strTeamBadge} height='70px' width='70px'></img>
               <div className='teamLeague'>
                 {theTeam.strLeague}
               </div>
@@ -164,16 +164,16 @@ showTeams = () => {
     
  
     return (
-      <div className="App">
+      <body className="choosePage">
 
-     <h1>Find your club</h1>  
+     <h1 className='title'>Find your club</h1>  
    
     <input type='text' placeholder='  Search by team name' name='search' className='search' onChange={this.searchForTeam}></input>  
     <ul className='teamList'>
 
       {this.showTeams()}
       </ul>
-    </div>
+    </body>
     );
   }
 }

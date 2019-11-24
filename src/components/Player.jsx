@@ -41,6 +41,7 @@ getDetail = () => {
                 playerHeight: playerData.strHeight,
                 playerDescription: playerData.strDescriptionEN,
                 playerCutout: playerData.strCutout,
+                playerRender: playerData.strRender,
             })
 }
 }
@@ -51,8 +52,8 @@ getDetail = () => {
         console.log(this.state)
         return (
             <div>
-            <div className= "playerHeader">
-                <img className="playerImg" src={this.state.playerCutout}></img>
+            <div className= "header">
+                <img alt='' className="playerImg" src={this.state.playerCutout}></img>
                 <h1>{this.state.playerName}</h1>
             </div>
             <div className='details'>
@@ -66,22 +67,27 @@ getDetail = () => {
                 <li><strong>Birthdate:</strong>  {this.state.playerDOB}</li>
             </ul>
            
-                <p className='about'>
-                <h3>About:</h3>
-                <span>{this.state.playerDescription}</span>
-                </p>
+                <div className='about'>
+                    <p>
+                        <h3>About:</h3>
+                        <span>{this.state.playerDescription}</span>
+                    </p>
+                </div>
+                <div className='playerRender'>
+                    <img  alt='' src={this.state.strRender}></img>
+                </div>
            
             </div>
         
             <div className="footer">
                     <div><Link to={this.state.instagram}>
-                    <img className='social' src='./images/Instagram.png'></img>
+                    <img  alt=''className='social' src='./images/Instagram.png'></img>
                     </Link></div> 
                     <div><Link to={this.state.facebook}> 
-                    <img className='social' src='./images/Facebook.png'></img>
+                    <img  alt='' className='social' src='./images/Facebook.png'></img>
                     </Link></div>
                     <div><Link to={this.state.twitter}> 
-                    <img className='social' src='./images/Twitter.png'></img>
+                    <img  alt='' className='social' src='./images/Twitter.png'></img>
                     </Link></div>  
             </div>
             </div>

@@ -3,17 +3,44 @@
     margin: 20px;
 }
 
+.teamHeader {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    background-color: bisque;
+    border-bottom: 2px solid black;
+    justify-content: space-evenly;
+    height: 20vh;
+}
+
+.teamName {
+    font-size: 8vw;
+    margin: 2px;
+    color: #222
+}
+
+.teamHeader > img {
+ 
+    height: 19vh;
+}
 
 .teamDescription {
-    background-color: lightcoral;
-    color: white;
-    width: 80vw;
+    background-color: lightseagreen;
+    color: #222;
+    width: 50vw;
     height: 200px;
-    margin: 20px;
     overflow: scroll;
     padding: 10px;
     text-align: left;
-    border: 3px solid black;
+    border: 3px solid white;
+}
+
+.teamStuff {
+    padding: 20px;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .teamDescription > h3 {
@@ -31,9 +58,12 @@
     text-align: left;
     display: flex;
     flex-wrap: wrap;
-    width: 70vw;
-    margin-bottom: 30px;
+    width: 40vw;
     justify-content: center;
+    border: 2px solid white;
+    overflow: scroll;
+    background-color: lightgray;
+    padding: 20px 0 20px 0
 }
 
 .eachPlayer {
@@ -42,7 +72,7 @@
     align-items: center;
     justify-content: space-between;
     color: black;
-    background-color: bisque;
+    background-color: lightseagreen;
     padding: 2px;
    width: 150px;
    border: 2px solid black
@@ -64,34 +94,6 @@
     align-items: center;
 }
 
-.teamHeader {
-    display: flex;
-    padding: 10px;
-    align-items: center;
-    /* background-color: bisque;
-    border-bottom: 1px solid black; */
-    margin: 0;
-}
-
-.teamHeader > h1 {
-    width: 100vw;
-    font-size: 13vw;
-    margin: 2px;
-   
-}
-
-
-.teamImg {
-    height: 150px;
-    width: 150px;
-    margin-left: 30px;
-    background-color: white;
-    /* border-radius:50%; */
-    /* padding: 10px; */
-    /* border: 2px solid black; */
-}
-
-
 
 .playerName {
     margin: 2px;
@@ -101,8 +103,8 @@
 
 .teamDetails {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100vw;
+   
 }
 
 .social {
@@ -112,12 +114,37 @@
 }
 
 .teamLinks {
-    background-color: lightcoral;
+    background-color: bisque;
     border: 2px solid black;
     width: 100vw;
     display: flex;
     justify-content: space-around;
+ 
     align-items: center;
     flex-wrap: wrap;
-    height: 100px;
+    height: 12vh;
+}
+
+.container {
+    margin-top: 30px;
+    margin-bottom: 80px;
+    width: 60vw;
+    padding: 10px;
+    height: 50vh;
+    background-color: bisque;
+}
+
+.modal-content {
+    height: 40vh;
+  
+}
+
+.modal-open {
+    height: 40vh;
+  
+}
+
+.embed-responsive-item{
+    height: 40vh;
+    
 }
