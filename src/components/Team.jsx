@@ -15,6 +15,9 @@ export default class Team extends Component {
 componentDidMount(){
     const path = `https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=${this.props.match.params.id}`
     axios.get(path).then(team => {
+        
+        this.getLeagueTable(team.data.teams[0].idLeague)
+
         this.setState({
           theTeam: team.data
         }, () => {
@@ -35,6 +38,13 @@ componentDidMount(){
               allVideos: videos.data
           })
       })
+      const eventPath = `https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=${this.props.match.params.id}`
+      axios.get (eventPath).then(events => {
+          this.setState({
+              upcomingEvents: events.data
+          })
+      })
+      
 }
 
 getTeamData = () => {
@@ -107,6 +117,9 @@ getTeamHighlights = () => {
         }); 
         if (filteredVideos.length > 0){
             console.log(filteredVideos[0].embed)
+            filteredVideos[0].embed.replace('height:590px','height:1590px')
+            console.log(filteredVideos[0].embed)
+
             console.log(filteredVideos[0])
             return (        
                 filteredVideos[0].embed
@@ -115,15 +128,67 @@ getTeamHighlights = () => {
     } 
     };
 
+    getUpcomingEvents = () => {
+        if (this.state.upcomingEvents !== undefined){
+            return this.state.upcomingEvents.events.map((eachGame) =>{
+                console.log(eachGame.strEvent)
+                console.log(this.state.upcomingEvents)
+                return (
+                    
+                    <div className='eachGame'>
+                        <h4 className='eventTitle'>{eachGame.strEvent}</h4>
+                        <div className='gameDetails'>
+                            <span className='eventLeague'>{eachGame.strLeague}</span>
+                            <span className='eventDate'>{eachGame.dateEvent}</span>
+                            <span className='eventTime'>{eachGame.strTime}</span>
+                        </div>
+                    </div>
+                    
+                )
+            
+        })
+    }
+}
+
+
+getLeagueTable = (idLeague) => {
+    //console.log('in leagure tbale', this.state.theTeam.teams)
+    //if (this.state.theTeam.teams !== undefined){
+        const tablePath = `https://www.thesportsdb.com/api/v1/json/1/lookuptable.php?l=${idLeague}&s=1920`
+        axios.get (tablePath).then(table => {
+            console.log(table, 9090990909)
+            this.setState({
+                leagueTable: table.data
+            })
+        })
+        console.log(this.state.leagueTable)
+    //}
+}
+
+showLeagueTable = () => {
+    if (this.state.leagueTable !== undefined){
+        return this.state.leagueTable.table.map(eachTeam => {
+            console.log(eachTeam)
+            return (
+                <tr className='tableRow'>
+                    <td className='tableTeamName'><strong>{eachTeam.name}</strong></td>
+                    <td className='tableElement'>{eachTeam.win}</td>
+                    <td className='tableElement'>{eachTeam.draw}</td>
+                    <td className='tableElement'>{eachTeam.loss}</td>
+                    <td className='tableElement'>{eachTeam.goalsfor}</td>
+                    <td className='tableElement'>{eachTeam.goalsagainst}</td>
+                    <td className='tableElement'>{eachTeam.goalsdifference}</td>
+                    <td className='tableElement'>{eachTeam.total}</td>
+                </tr>
+                
+            )
+        })
+        console.log(this.state.leagueTable.table[0])
+    }
+}
 
 
     render() {        
-        
-        
-        // document.getElementsByClassName('_scorebatEmbeddedPlayer_').style.width = '16vw';
-        // document.getElementsByClassName('_scorebatEmbeddedPlayer_').style.height = '500px';
-
-        
         return (
             <div>
                 <div className= "teamHeader">
@@ -132,17 +197,41 @@ getTeamHighlights = () => {
             </div>
                
                 <div className='teamDetails'>
-                    <div className = 'roster'>
+                <div className='teamInfo'>
+                    <div className='squad'>Team-sheet:</div>
+                    <div className = 'roster'>           
                     {this.getPlayerData()}
                     </div>
-                    <div className='teamStuff'> 
                     <div className='teamDescription'>
                         <h3>About club:</h3>
                         <p>Stadium: {this.state.teamStadium}</p>
                         <p>Location: {this.state.teamStadiumLocation}</p>
                         <p>{this.state.teamDescription}</p>
                     </div>
-                    <div className='iframe' dangerouslySetInnerHTML={{ __html: this.getTeamHighlights() }} />,
+                </div>
+                    <div className='teamStuff'> 
+                    <div className='iframe' dangerouslySetInnerHTML={{ __html: this.getTeamHighlights() }} />
+                    <div className='schedule'>
+                        {this.getUpcomingEvents()}
+                    </div>
+                    <div className='theTable'>
+                        <div className='tableTitle'>League Standings</div>
+                    <div className='leagueTable'>
+                    <table>
+                        <tr className='tableHead'>
+                            <th>Team</th>
+                            <th>Won</th>
+                            <th>Tied</th>
+                            <th>Lost</th>
+                            <th>GF</th>
+                            <th>GA</th>
+                            <th>GD</th>
+                            <th>Points</th>
+                        </tr>
+                        {this.showLeagueTable()}
+                        </table>
+                    </div>
+                   </div>
                     </div>
                     {/* <p>{this.state.teamAltName}</p>  */}
                 </div>
