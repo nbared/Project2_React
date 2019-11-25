@@ -125,26 +125,12 @@
     height: 12vh;
 }
 
-.container {
-    margin-top: 30px;
-    margin-bottom: 80px;
-    width: 60vw;
-    padding: 10px;
-    height: 50vh;
-    background-color: bisque;
-}
 
-.modal-content {
-    height: 40vh;
+
+
+
+iframe {
+    margin: 50px;
   
-}
-
-.modal-open {
-    height: 40vh;
-  
-}
-
-.embed-responsive-item{
-    height: 40vh;
-    
+   
 }

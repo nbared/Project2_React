@@ -104,17 +104,25 @@ getTeamHighlights = () => {
             || eachvideo.side1.name.toLowerCase() == this.state.teamAltName.toLowerCase() 
             || eachvideo.side2.name.toLowerCase() == this.state.teamAltName.toLowerCase() 
             )
-        }); console.log(filteredVideos[0].embed)
-        console.log(filteredVideos[0])
-        
-        return (        
+        }); 
+        if (filteredVideos.length > 0){
+            console.log(filteredVideos[0].embed)
+            console.log(filteredVideos[0])
+            return (        
                 filteredVideos[0].embed
-        )
+                )
+            }
     } 
     };
 
 
+
     render() {        
+        
+        
+        // document.getElementsByClassName('_scorebatEmbeddedPlayer_').style.width = '16vw';
+        // document.getElementsByClassName('_scorebatEmbeddedPlayer_').style.height = '500px';
+
         
         return (
             <div>
@@ -134,7 +142,7 @@ getTeamHighlights = () => {
                         <p>Location: {this.state.teamStadiumLocation}</p>
                         <p>{this.state.teamDescription}</p>
                     </div>
-                    {this.getTeamHighlights()}
+                    <div className='iframe' dangerouslySetInnerHTML={{ __html: this.getTeamHighlights() }} />,
                     </div>
                     {/* <p>{this.state.teamAltName}</p>  */}
                 </div>
