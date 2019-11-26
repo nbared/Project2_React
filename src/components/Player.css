@@ -1,10 +1,11 @@
 .header {
     display: flex;
     padding: 10px;
+    height: 13vh;
     align-items: center;
     background-color: bisque;
     border-bottom: 2px solid black;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .header > h1 {
@@ -15,7 +16,7 @@
 
 
 .playerImg {
-    height: 12vw;
+    height: 13vh;
     /* width: 180px; */
     margin-left: 70px;
     background-color: white;
@@ -24,27 +25,34 @@
 }
 .details {
     display: flex;
+    height: 65vh;
+    margin-bottom: 12vh;
 }
 .playerStats {
     width: 25vw;
     text-align: left;
     list-style-type: none;
-    height: 65vh;
+    height: 67vh;
     color: bisque;
     position: relative;
     bottom: 16px;
-    /* overflow: scroll; */
+    overflow: scroll;
     background-color: #222;
     padding-top: 20px;
 }
 .about {
     margin: 0;
     width: 50vw;
-    padding: 0 30px;
-    height: 62vh;
+    padding: 0 8px;
+    height: 72vh;
     overflow: scroll;
     background-color: lightgray;
     text-align: left;
+    border-right: 2px solid #222;
+}
+.about > p {
+    height: 65vh;
+    margin-bottom: 20px;
 }
 
 .about > h3 {
@@ -59,14 +67,19 @@ li {
 }
 
 .playerRender {
-    background-color: white;
-    border-left: 2px solid black;
+    background-color: seagreen;
     width: 25vw;
+    height: 72vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* align-items: center; */
 }
 
-.playerRender > img {
-    height: 200px;
-    width: 150px;
+.renderImg {
+    height: 30vw;
+    width: 25vw;
 }
 
 .footer {
@@ -80,3 +93,4 @@ li {
     bottom: 0;
     height: 12vh;
 }
+

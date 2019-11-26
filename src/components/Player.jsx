@@ -46,12 +46,17 @@ getDetail = () => {
 }
 }
 
-
+// /team/:id
     render() {
         
+        console.log(this.state.player.players)
         console.log(this.state)
         return (
             <div>
+             <nav className='navbar'>
+             {this.state.player.players&&
+               <Link to={`/team/${this.state.player.players[0].idTeam}`} className="navlink">Back to Team</Link>}   
+            </nav>
             <div className= "header">
                 <img alt='' className="playerImg" src={this.state.playerCutout}></img>
                 <h1>{this.state.playerName}</h1>
@@ -70,11 +75,11 @@ getDetail = () => {
                 <div className='about'>
                     <p>
                         <h3>About:</h3>
-                        <span>{this.state.playerDescription}</span>
+                        <span className='theDescription'>{this.state.playerDescription}</span>
                     </p>
                 </div>
                 <div className='playerRender'>
-                    <img  alt='' src={this.state.strRender}></img>
+                    <img className='renderImg' alt='' src={this.state.playerRender}></img>
                 </div>
            
             </div>

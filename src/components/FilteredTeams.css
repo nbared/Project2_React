@@ -6,15 +6,12 @@
 
 
 .teamList {
-    /* all: unset; */
-    /* width: 33vw; */
     display: flex;
-    flex-wrap: wrap;
-    width: 90vw;
+    flex-wrap: wrap; 
     justify-content: center;
-    margin: 20px 50px;
+    margin: 20px 0;
     align-items: center;
-    
+   
     }
 
 

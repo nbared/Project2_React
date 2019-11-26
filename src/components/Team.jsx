@@ -2,7 +2,24 @@ import React, { Component } from 'react'
 import axios from "axios";
 import './Team.css'
 import {Link} from 'react-router-dom'
-import IFramePage from './IFramePage'
+import {
+    FacebookShareButton,
+    TwitterShareButton,
+    TelegramShareButton,
+    WhatsappShareButton,
+    RedditShareButton,
+    TumblrShareButton,
+  } from 'react-share';
+  import {
+    FacebookIcon,
+    TwitterIcon,
+    TelegramIcon,
+    WhatsappIcon,
+    RedditIcon,
+    TumblrIcon,
+  } from 'react-share';
+
+
 
 export default class Team extends Component {
 
@@ -10,6 +27,7 @@ export default class Team extends Component {
         theTeam: [],
         teamName: "",
         players: [],
+        allVideo: null
     }     
 
 componentDidMount(){
@@ -34,9 +52,24 @@ componentDidMount(){
       });
       const videoPath = 'https://www.scorebat.com/video-api/v1/'
       axios.get(videoPath).then(videos =>{
-          this.setState({
-              allVideos: videos.data
-          })
+        //   console.log(videos.data)
+        //   console.log(this.filterVideos(videos.data))
+        //   let url = this.filterVideos(videos.data)
+        //   url = url.split("src='")[1].split("'")[0]
+
+        //   console.log(url, '-=-=-=-=')
+        //   this.setState({
+        //       allVideos: videos.data,
+        //       url: url
+        //   })
+            this.setState({
+                allVideos: videos.data
+            })
+            console.log(this.state.allVideos)
+        
+            // let video = this.state.allVideos.find(eachOne => eachOne.title.includes)
+
+
       })
       const eventPath = `https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=${this.props.match.params.id}`
       axios.get (eventPath).then(events => {
@@ -46,6 +79,8 @@ componentDidMount(){
       })
       
 }
+
+
 
 getTeamData = () => {
         console.log(this.state.theTeam)
@@ -66,8 +101,21 @@ getTeamData = () => {
                 teamShort: teamData.strTeamShort
             }, ()=> {
                 console.log(this.state)
+                console.log(this.state.allVideos)
+                let video =  this.state.allVideos.find(eachOne => eachOne.title.includes(this.state.teamName) )
+                if (video !== undefined){
+
+                    let url = video.embed
+                    url = url.split("src='")[1].split("'")[0]
+                    this.setState({
+                        teamVideoLink: url
+                    })
+                    console.log(url)
+                }
+                
             }
             )
+            console.log(this.state.teamVideoLink)
     
 }
 
@@ -103,17 +151,23 @@ getPlayerData = () => {
 }
 
 
+
+
+
+
 getTeamHighlights = () => {
 
-    if (this.state.allVideos !== undefined && this.state.teamName !== undefined && this.state.teamAltName !== undefined){
+    console.log(this.state.allVideos)
+
+    if ((this.state.allVideos !== undefined || this.state.allVideos !== null) && this.state.teamName !== undefined && this.state.teamAltName !== undefined){
            
-        // console.log(this.state.teamVideos)
+        console.log(this.state.allVideos)
         let filteredVideos = this.state.allVideos.filter((eachvideo) => {
-            return (eachvideo.side1.name.toLowerCase() == this.state.teamName.toLowerCase() ||
-            eachvideo.side2.name.toLowerCase() == this.state.teamName.toLowerCase() 
-            || eachvideo.side1.name.toLowerCase() == this.state.teamAltName.toLowerCase() 
-            || eachvideo.side2.name.toLowerCase() == this.state.teamAltName.toLowerCase() 
-            )
+            console.log(eachvideo.title)
+            return (eachvideo.title.toLowerCase().includes(this.state.teamName.toLowerCase()) == true) 
+            // ||
+            //         (eachvideo.title.toLowerCase().includes(this.state.teamAltName.toLowerCase() == true)
+            // )
         }); 
         if (filteredVideos.length > 0){
             console.log(filteredVideos[0].embed)
@@ -126,6 +180,7 @@ getTeamHighlights = () => {
                 )
             }
     } 
+
     };
 
     getUpcomingEvents = () => {
@@ -139,8 +194,8 @@ getTeamHighlights = () => {
                         <h4 className='eventTitle'>{eachGame.strEvent}</h4>
                         <div className='gameDetails'>
                             <span className='eventLeague'>{eachGame.strLeague}</span>
-                            <span className='eventDate'>{eachGame.dateEvent}</span>
-                            <span className='eventTime'>{eachGame.strTime}</span>
+                            <span className='eventDate'>Date: {eachGame.dateEvent}</span>
+                            <span className='eventTime'>Time: {eachGame.strTime}</span>
                         </div>
                     </div>
                     
@@ -152,23 +207,18 @@ getTeamHighlights = () => {
 
 
 getLeagueTable = (idLeague) => {
-    //console.log('in leagure tbale', this.state.theTeam.teams)
-    //if (this.state.theTeam.teams !== undefined){
         const tablePath = `https://www.thesportsdb.com/api/v1/json/1/lookuptable.php?l=${idLeague}&s=1920`
         axios.get (tablePath).then(table => {
-            console.log(table, 9090990909)
             this.setState({
                 leagueTable: table.data
             })
         })
-        console.log(this.state.leagueTable)
-    //}
+   
 }
 
 showLeagueTable = () => {
     if (this.state.leagueTable !== undefined){
         return this.state.leagueTable.table.map(eachTeam => {
-            console.log(eachTeam)
             return (
                 <tr className='tableRow'>
                     <td className='tableTeamName'><strong>{eachTeam.name}</strong></td>
@@ -178,22 +228,27 @@ showLeagueTable = () => {
                     <td className='tableElement'>{eachTeam.goalsfor}</td>
                     <td className='tableElement'>{eachTeam.goalsagainst}</td>
                     <td className='tableElement'>{eachTeam.goalsdifference}</td>
-                    <td className='tableElement'>{eachTeam.total}</td>
+                    <td className='points'>{eachTeam.total}</td>
                 </tr>
                 
             )
         })
-        console.log(this.state.leagueTable.table[0])
     }
 }
 
 
     render() {        
+   
         return (
             <div>
                 <div className= "teamHeader">
+                <nav className='navbar'>
+               <Link to='/choose-team' className="navlink">Back to Team List</Link>
+            </nav>
+            <div className='headerInfo'>
                 <h1 className='teamName'>{this.state.teamName}</h1>
                 <img alt='' className="teamImg" src={this.state.teamBadge}></img>
+            </div>
             </div>
                
                 <div className='teamDetails'>
@@ -211,6 +266,15 @@ showLeagueTable = () => {
                 </div>
                     <div className='teamStuff'> 
                     <div className='iframe' dangerouslySetInnerHTML={{ __html: this.getTeamHighlights() }} />
+                    <div className='shareButtons'>
+                    <FacebookShareButton url={this.state.teamVideoLink}><FacebookIcon size={32} round={true} /></FacebookShareButton>
+                    <TwitterShareButton url={this.state.teamVideoLink}><TwitterIcon size={32} round={true} /></TwitterShareButton>
+                    <TelegramShareButton url={this.state.teamVideoLink}><TelegramIcon size={32} round={true} /></TelegramShareButton>
+                    <WhatsappShareButton url={this.state.teamVideoLink}><WhatsappIcon size={32} round={true} /></WhatsappShareButton>
+                    <RedditShareButton url={this.state.teamVideoLink}><RedditIcon size={32} round={true} /></RedditShareButton>
+                    <TumblrShareButton url={this.state.teamVideoLink}><TumblrIcon size={32} round={true} /></TumblrShareButton>
+                   
+                    </div>
                     <div className='schedule'>
                         {this.getUpcomingEvents()}
                     </div>

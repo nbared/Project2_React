@@ -14,7 +14,7 @@ export default class Home extends Component {
         <h3>Choose Your Team,</h3>
         <h4 className='home2'>stay informed with the latest team data.</h4>
         <h3>Stream Highlights, </h3>
-        <h4 className='home2'>watch the latest goals from top leagues.</h4>
+        <h4 className='home2'>watch and share the latest goals.</h4>
         <Link to='/choose-team' className='chooseLink'>Select Team</Link>
         </div>
             
