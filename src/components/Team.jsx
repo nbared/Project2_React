@@ -164,10 +164,15 @@ getTeamHighlights = () => {
         console.log(this.state.allVideos)
         let filteredVideos = this.state.allVideos.filter((eachvideo) => {
             console.log(eachvideo.title)
-            return (eachvideo.title.toLowerCase().includes(this.state.teamName.toLowerCase()) == true) 
-            // ||
-            //         (eachvideo.title.toLowerCase().includes(this.state.teamAltName.toLowerCase() == true)
-            // )
+            return (eachvideo.side1.name.toLowerCase() == (this.state.teamName.toLowerCase())
+            ||
+            eachvideo.side2.name.toLowerCase() == (this.state.teamName.toLowerCase())
+            ||
+            eachvideo.side1.name.toLowerCase() == (this.state.teamAltName.toLowerCase())
+            ||
+            eachvideo.side2.name.toLowerCase() == (this.state.teamAltName.toLowerCase())
+            ) 
+           
         }); 
         if (filteredVideos.length > 0){
             console.log(filteredVideos[0].embed)
