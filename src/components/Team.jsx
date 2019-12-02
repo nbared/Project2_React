@@ -43,7 +43,7 @@ componentDidMount(){
         }
         );
       });
-      const playerPath = `https://www.thesportsdb.com/api/v1/json/1/lookup_all_players.php?id=${this.props.match.params.id}`
+      const playerPath = `https://www.thesportsdb.com/api/v1/json/4013017/lookup_all_players.php?id=${this.props.match.params.id}`
     axios.get(playerPath).then(players => {
         this.setState({
           players: players.data
